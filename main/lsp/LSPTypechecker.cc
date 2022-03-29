@@ -738,13 +738,7 @@ LSPQueryResult LSPTypecheckerDelegate::query(const core::lsp::Query &q,
     return typechecker.query(q, filesForQuery, workers);
 }
 
-const ast::ParsedFile &LSPTypecheckerDelegate::getIndexed(core::FileRef fref) const {
-    typechecker.getIndexedRWLock()->AssertReaderHeld();
-    return typechecker.getIndexed(fref);
-}
-
 std::vector<ast::ParsedFile> LSPTypecheckerDelegate::getResolved(const std::vector<core::FileRef> &frefs) const {
-    typechecker.getIndexedRWLock()->AssertReaderHeld();
     return typechecker.getResolved(frefs);
 }
 
